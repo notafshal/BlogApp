@@ -5,13 +5,12 @@ const blogSchema = new mongoose.Schema({
     type: String,
     required: [true, "please provide blog title"],
   },
-  author: {
+  content: {
     type: String,
-    required: [true, "please provide blog author"],
+    required: [true, "please provide blog content"],
   },
   url: {
     type: String,
-    required: [true, "please provide blog url"],
   },
   likes: {
     type: Number,

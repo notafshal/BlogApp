@@ -8,7 +8,12 @@ const cors = require("cors");
 const blogRouter = require("./controllers/blogs");
 app.use(express.json());
 app.use(errorHandler);
-
+app.use(cors());
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "Welcome",
+  });
+});
 app.use("/api/users", userRouter);
 app.use("/api/blogs", blogRouter);
 mongoose
