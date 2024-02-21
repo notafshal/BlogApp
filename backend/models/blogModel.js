@@ -19,5 +19,9 @@ const blogSchema = new mongoose.Schema({
   like: {
     type: Boolean,
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users",
+  },
 });
 const Blog = mongoose.model("Blog", blogSchema);
