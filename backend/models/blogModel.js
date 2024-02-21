@@ -14,6 +14,10 @@ const blogSchema = new mongoose.Schema({
   },
   likes: {
     type: Number,
+    default: 0,
+  },
+  like: {
+    type: Boolean,
   },
 });
 const Blog = mongoose.model("Blog", blogSchema);

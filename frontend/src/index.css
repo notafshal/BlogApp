@@ -6,3 +6,9 @@
   font-weight: 400;
   font-style: normal;
 }
+.underlined {
+  text-decoration: none;
+  color: #fff;
+  padding: 15px;
+}
+

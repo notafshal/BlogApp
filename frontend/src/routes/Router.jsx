@@ -1,13 +1,19 @@
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
+import Profile from "../pages/Profile";
+import BlogPost from "../pages/BlogPost";
 
-const Router = () => {
+const Routers = () => {
   return (
     <>
       <BrowserRouter>
-        <Route path="/" component={HomePage} exact />
+        <Routes>
+          <Route path="/" element={<HomePage />} exact />
+          <Route path="/Profile" element={<Profile />} exact />
+          <Route path="/Upload" element={<BlogPost />} exact />
+        </Routes>
       </BrowserRouter>
     </>
   );
 };
-export default Router;
+export default Routers;

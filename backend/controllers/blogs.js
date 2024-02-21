@@ -38,7 +38,6 @@ blogRouter.get("/", async (req, res) => {
   const Blog = mongoose.model("Blog");
   const blogData = await Blog.find({});
   res.status(200).json({
-    message: "success",
     data: blogData,
   });
 });
