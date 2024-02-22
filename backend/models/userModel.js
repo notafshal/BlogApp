@@ -14,6 +14,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide your Password"],
   },
+  blog: [
+    {
+      ref: "Blog",
+      type: mongoose.Schema.Types.ObjectId,
+    },
+  ],
 });
 
 const userModel = mongoose.model("Users", userSchema);
