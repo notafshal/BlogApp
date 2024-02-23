@@ -49,14 +49,13 @@ userRouter.post("/login", async (req, res) => {
 userRouter.post("/register", async (req, res) => {
   const { fullName, email, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
-  try {
-  } catch (e) {}
+
   try {
     if (!fullName) throw "Name is missing!!";
     if (!email) throw "Email is missing!!";
     if (!password) throw "Password is missing!!";
   } catch (e) {
-    res.send.json({
+    res.status(400).json({
       status: "failed",
       message: e,
     });

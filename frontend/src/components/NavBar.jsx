@@ -25,6 +25,9 @@ const NavBar = () => {
               <Link to="/Upload" className="underlined">
                 Upload
               </Link>
+              <Link to="/Login" className="underlined">
+                Login
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
