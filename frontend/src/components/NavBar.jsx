@@ -8,11 +8,6 @@ const NavBar = () => {
     <>
       <Navbar expand="lg" className="bg-success-subtle">
         <Container>
-          <Navbar.Brand>
-            <Link to="/" className="underlined">
-              BlogSite
-            </Link>
-          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">

@@ -38,7 +38,7 @@ blogRouter.post("/", async (req, res) => {
       likes: likes,
     });
   } catch (e) {
-    res.status(400).json({
+    res.send(400).json({
       status: "failed",
       message: e.message,
     });

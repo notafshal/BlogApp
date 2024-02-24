@@ -49,17 +49,8 @@ userRouter.post("/login", async (req, res) => {
 userRouter.post("/register", async (req, res) => {
   const { fullName, email, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
-
-  try {
-    if (!fullName) throw "Name is missing!!";
-    if (!email) throw "Email is missing!!";
-    if (!password) throw "Password is missing!!";
-  } catch (e) {
-    res.status(400).json({
-      status: "failed",
-      message: e,
-    });
-    return;
+  if (fullName === undefined || email === undefined || password === undefined) {
+    return res.status(400).json({ message: "missing credentials" });
   }
 
   try {
@@ -68,8 +59,6 @@ userRouter.post("/register", async (req, res) => {
       email: email,
       password: hashedPassword,
     });
-    console.log(fullName, email, hashedPassword);
-    res.redirect("/login");
   } catch (e) {
     res.status(400).json({
       status: "failed",
