@@ -15,9 +15,12 @@ mongoose
   .catch((e) => {
     console.log("No DB connection");
   });
-
+app.use((req, res, next) => {
+  console.log("Request Headers:", req.headers);
+  next();
+});
 app.use(express.json());
-app.use(cors());
+app.use(cors(config.cors));
 app.use(errorHandler);
 
 app.use(requestLogger);
