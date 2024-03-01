@@ -12,7 +12,9 @@ const Login = () => {
     e.preventDefault();
     const user = await loginService(email, password);
     console.log(user);
+    console.log(email, password);
   };
+
   return (
     <>
       <div className="loginbody">
@@ -25,7 +27,9 @@ const Login = () => {
                 type="email"
                 value={email}
                 placeholder="Enter email"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">

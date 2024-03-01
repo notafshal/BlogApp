@@ -3,22 +3,7 @@ const mongoose = require("mongoose");
 require("../models/blogModel");
 const jwt = require("jsonwebtoken");
 
-const getTokenFrom = (req, res, next) => {
-  const auth = req.get("authorization");
-  if (auth && auth.startsWith("Bearer ")) {
-    return auth.replace("Bearer ", "");
-  }
-  return res.status(400).json({
-    status: "failed",
-  });
-};
-
 blogRouter.post("/", async (req, res) => {
-  const decodedToken = await jwt.verify(
-    getTokenFrom(req),
-    process.env.SECRET_KEY
-  );
-  console.log(decodedToken);
   const Blog = mongoose.model("Blog");
   const { title, content, likes } = req.body;
   try {

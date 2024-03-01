@@ -9,9 +9,6 @@ const blogSchema = new mongoose.Schema({
     type: String,
     required: [true, "please provide blog content"],
   },
-  url: {
-    type: String,
-  },
   likes: {
     type: Number,
     default: 0,

@@ -4,37 +4,45 @@ import axios from "axios";
 import { useState } from "react";
 
 const Signup = () => {
-  const [fullname, setFullname] = useState("");
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
 
   const formHandler = async (e) => {
     e.preventDefault();
-    const newUserObj = {
-      fullname: fullname,
-      email: email,
-      password: password,
-    };
-    console.log(newUserObj);
+
     await axios
-      .post("http://localhost:3001/api/users/register", newUserObj)
-      .then((res) => {
-        console.log(res);
+      .post("http://localhost:3001/api/users/register", {
+        fullName,
+        email,
+        password,
+      })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((e) => {
+        console.log(e);
+        setError("Registration failed. please try again");
       });
+    console.log(fullName);
+    console.log("Current value of fullName:", setFullName);
   };
   return (
     <>
       <div className="loginbody">
         <NavBar />
+
         <Card className="p-3 mx-auto mt-5 w-25 cardColor">
+          {error && <p className="text-danger">{error}</p>}
           <Form onSubmit={formHandler}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Fullname</Form.Label>
               <Form.Control
                 type="text"
-                value={fullname}
-                placeholder="Enter your fullname"
-                onChange={(e) => setFullname(e.target.value)}
+                value={fullName}
+                placeholder="Enter your fullName"
+                onChange={(e) => setFullName(e.target.value)}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">

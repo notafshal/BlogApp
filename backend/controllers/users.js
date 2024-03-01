@@ -15,6 +15,7 @@ userRouter.post("/login", async (req, res) => {
       status: "failed",
       message: e,
     });
+    return;
   }
 
   try {
@@ -39,6 +40,7 @@ userRouter.post("/login", async (req, res) => {
       status: "failed",
       message: e,
     });
+    return;
   }
 
   res.status(400).json({
@@ -52,7 +54,7 @@ userRouter.post("/register", async (req, res) => {
   if (fullName === undefined || email === undefined || password === undefined) {
     return res.status(400).json({ message: "missing credentials" });
   }
-
+  console.log(req.body);
   try {
     await Users.create({
       fullName: fullName,
