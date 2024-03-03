@@ -3,6 +3,7 @@ import axios from "axios";
 const baseUrl = "api/users/login";
 
 const login = async (credentials) => {
+  console.log(`credentials is ${credentials}`);
   try {
     const res = await axios.post(baseUrl, credentials);
     console.log(res);

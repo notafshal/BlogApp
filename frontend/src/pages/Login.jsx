@@ -1,18 +1,21 @@
 import { Form, Button, Card } from "react-bootstrap";
 import NavBar from "../components/NavBar";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginService from "../services/login";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const formhandler = async (e) => {
     e.preventDefault();
-
-    const user = await loginService(email, password);
-    console.log("Hellow");
+    const credentials = { email, password };
+    const user = await loginService(credentials).then((result) => {
+      console.log(result);
+      navigate("/");
+    });
     console.log(user);
   };
 

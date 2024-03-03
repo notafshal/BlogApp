@@ -4,8 +4,8 @@ import { useState } from "react";
 import axios from "axios";
 
 const BlogPost = () => {
-  const [newTitle, setNewTitle] = useState();
-  const [newContent, setNewContent] = useState();
+  const [newTitle, setNewTitle] = useState("");
+  const [newContent, setNewContent] = useState("");
 
   const postVlog = (e) => {
     e.preventDefault();
