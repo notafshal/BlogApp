@@ -2,16 +2,17 @@ import { Button, Card, Form } from "react-bootstrap";
 import NavBar from "../components/NavBar";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const formHandler = async (e) => {
     e.preventDefault();
-
     await axios
       .post("http://localhost:3001/api/users/register", {
         fullName,
@@ -20,6 +21,8 @@ const Signup = () => {
       })
       .then((result) => {
         console.log(result);
+        alert("User Registerd successfully");
+        navigate("/Login");
       })
       .catch((e) => {
         console.log(e);
