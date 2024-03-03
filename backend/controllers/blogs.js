@@ -2,7 +2,18 @@ const blogRouter = require("express").Router();
 const mongoose = require("mongoose");
 require("../models/blogModel");
 const jwt = require("jsonwebtoken");
+const { auth } = require("../utils/middleware");
+const express = require("express");
+const app = express();
 
+blogRouter.get("/", async (req, res) => {
+  const Blog = mongoose.model("Blog");
+  const blogData = await Blog.find({});
+  res.status(200).json({
+    data: blogData,
+  });
+});
+app.use(auth);
 blogRouter.post("/", async (req, res) => {
   const Blog = mongoose.model("Blog");
   const { title, content, likes } = req.body;
@@ -33,14 +44,6 @@ blogRouter.post("/", async (req, res) => {
     message: "Blog Uploaded",
   });
   return;
-});
-
-blogRouter.get("/", async (req, res) => {
-  const Blog = mongoose.model("Blog");
-  const blogData = await Blog.find({});
-  res.status(200).json({
-    data: blogData,
-  });
 });
 
 blogRouter.delete("/:id", async (req, res) => {

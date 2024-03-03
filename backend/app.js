@@ -19,9 +19,7 @@ mongoose
 app.use(express.json());
 app.use(cors());
 app.use(errorHandler);
-
 app.use(requestLogger);
-app.use(auth);
 app.get("/", (req, res) => {
   res.status(200).json({
     status: "Welcome",

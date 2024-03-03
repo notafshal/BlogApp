@@ -54,7 +54,7 @@ userRouter.post("/register", async (req, res) => {
   if (fullName === undefined || email === undefined || password === undefined) {
     return res.status(400).json({ message: "missing credentials" });
   }
-  console.log(req.body);
+  if (email === Users.findOne(email)) console.log(req.body);
   try {
     await Users.create({
       fullName: fullName,

@@ -10,9 +10,10 @@ const Login = () => {
 
   const formhandler = async (e) => {
     e.preventDefault();
+
     const user = await loginService(email, password);
+    console.log("Hellow");
     console.log(user);
-    console.log(email, password);
   };
 
   return (
